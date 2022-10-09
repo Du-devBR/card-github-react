@@ -1,13 +1,16 @@
 
 import { Card } from '../../components/card/index'
+import '../../style/app.sass'
 
 
 export function App() {
 
   return (
-    <div className="App">
-      <h1>rocketcard</h1>
+    <div className="app">
       <Card />
+      <div>
+        <p>dddfdd</p>
+      </div>
     </div>
   )
 }
