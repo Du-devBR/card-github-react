@@ -1,6 +1,7 @@
 
 
 import "../../style/components/card.sass"
+import "../../style/components/customCard.sass/"
 import logo from '../../img/logo.png'
 import { InfoData } from "../infoData"
 import { useState } from "react"
@@ -16,11 +17,21 @@ export function Card(){
       company: '',
       location: ''
     })
-  const [userGithub, setUserGithub] = useState([])
+  const [userGithub, setUserGithub] = useState("github")
+  const [perfilGithub, setPerfilGithub] = useState('')
+  const [nameUserGithub, setNameUserGithub] = useState('')
+
+  function getNameInput(){
+    const newName =  nameUserGithub
+    setUserGithub(newName)
+  }
+
 
   useEffect(()=> {
+
     async function fetchData(){
-      const response = await fetch('https://api.github.com/users/Du-devBR')
+      const user = userGithub
+      const response = await fetch(`https://api.github.com/users/${user}`)
       const data = await response.json()
       setUser({
         name: data.name,
@@ -36,32 +47,52 @@ export function Card(){
   }, [userGithub])
 
   return (
-    <div className="container_card">
-      <div className="card">
-        <div className="header">
-          <div className="img">
-            <img src={logo} alt="logo rocketseat cor roxa" />
+    <div className="container">
+      <div className="container_card">
+        <div className="card">
+          <div className="header">
+            <div className="img">
+              <img src={logo} alt="logo rocketseat cor roxa" />
+            </div>
+            <h1>{user.name}</h1>
           </div>
-          <h1>{user.name}</h1>
+          <div className="content">
+            <div className="avatar">
+              <img src={user.avatar} alt="" />
+            </div>
+            <div className="info">
+              <InfoData
+                followers={user.followers}
+                following={user.following}
+                public_repos={user.public_repos}
+                company={user.company}
+                location={user.location}
+              />
+            </div>
+          </div>
+          <footer className="footer">
+            <img src={logo} alt="" />
+            <p>rocketcard</p>
+          </footer>
         </div>
-        <div className="content">
-          <div className="avatar">
-            <img src={user.avatar} alt="" />
-          </div>
-          <div className="info">
-            <InfoData
-              followers={user.followers}
-              following={user.following}
-              public_repos={user.public_repos}
-              company={user.company}
-              location={user.location}
-            />
-          </div>
+      </div>
+
+      <div className='container_custom'>
+        <div className="input_git">
+          <input
+            type="text"
+            placeholder='Digite seu usuario do github'
+            onChange={e => setNameUserGithub(e.target.value)}
+          />
+          <button
+            className='btn_submit'
+            onClick={getNameInput}
+            >
+            Enviar
+          </button>
         </div>
-        <footer className="footer">
-          <img src={logo} alt="" />
-          <p>rocketcard</p>
-        </footer>
+        <h2>Customizar Rocketcard</h2>
+        <button className='btn_generate_bg'>Gerar background</button>
       </div>
     </div>
   )
