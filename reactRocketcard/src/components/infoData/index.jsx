@@ -1,35 +1,33 @@
 import "../../style/components/infoData.sass"
-import followers from '../../img/followers.png'
-import repository from '../../img/repository.png'
-import company from '../../img/company.png'
-import location from '../../img/location.png'
-export function InfoData(){
+import followersImg from '../../img/followers.png'
+import repositoryImg from '../../img/repository.png'
+import companyImg from '../../img/company.png'
+import locationImg from '../../img/location.png'
+export function InfoData({followers, following, company, location, public_repos }){
   return (
     <div className="container_info">
       <div className="data">
-        <img src={followers} alt="" />
-        <p>716</p>
+        <img src={followersImg} alt="" />
+        <p>{followers}</p>
         <p>Seguidores</p>
       </div>
       <div className="data">
-        <img src={followers} alt="" />
-        <p>716</p>
-        <p>Seguidores</p>
+        <img src={followersImg} alt="" />
+        <p>{following}</p>
+        <p>Seguindo</p>
       </div>
       <div className="data">
-        <img src={repository} alt="" />
-        <p>716</p>
-        <p>Seguidores</p>
+        <img src={repositoryImg} alt="" />
+        <p>{public_repos}</p>
+        <p>Repositorios</p>
       </div>
       <div className="data">
-        <img src={company} alt="" />
-        <p>716</p>
-        <p>Seguidores</p>
+        <img src={companyImg} alt="" />
+        <p>{company}</p>
       </div>
       <div className="data">
-        <img src={location} alt="" />
-        <p>716</p>
-        <p>Seguidores</p>
+        <img src={locationImg} alt="" />
+        <p>{location}</p>
       </div>
     </div>
   )
