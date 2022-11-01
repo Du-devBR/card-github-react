@@ -18,13 +18,19 @@ export function Card(){
       location: ''
     })
   const [userGithub, setUserGithub] = useState("github")
-  const [perfilGithub, setPerfilGithub] = useState('')
   const [nameUserGithub, setNameUserGithub] = useState('')
+  const [backGroundColor, setBackGroundColor] = useState(false)
 
   function getNameInput(){
     const newName =  nameUserGithub
     setUserGithub(newName)
   }
+
+
+  function alterBackgroundColor(){
+    setBackGroundColor(!backGroundColor)
+  }
+
 
 
   useEffect(()=> {
@@ -48,7 +54,7 @@ export function Card(){
 
   return (
     <div className="container">
-      <div className="container_card">
+      <div className={`container_card ${backGroundColor ? 'bg_conatinerCard' : ''}`}>
         <div className="card">
           <div className="header">
             <div className="img">
@@ -92,7 +98,12 @@ export function Card(){
           </button>
         </div>
         <h2>Customizar Rocketcard</h2>
-        <button className='btn_generate_bg'>Gerar background</button>
+        <button
+          className='btn_generate_bg'
+          onClick={alterBackgroundColor}
+          >
+          Gerar background
+        </button>
       </div>
     </div>
   )
