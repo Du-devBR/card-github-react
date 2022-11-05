@@ -1,7 +1,6 @@
-
-
 import "../../style/components/card.sass"
 import "../../style/components/customCard.sass/"
+import "../../style/responsive.sass"
 import logo from '../../img/logo.png'
 import { InfoData } from "../infoData"
 import { useState } from "react"
@@ -20,10 +19,16 @@ export function Card(){
   const [userGithub, setUserGithub] = useState("github")
   const [nameUserGithub, setNameUserGithub] = useState('')
   const [backGroundColor, setBackGroundColor] = useState('')
+  const [validationUser, setValidationUser] = useState(false)
 
   function getNameInput(){
     const newName =  nameUserGithub
-    setUserGithub(newName)
+    if(nameUserGithub == ''){
+      setValidationUser(true)
+    }else {
+      setUserGithub(newName)
+      setNameUserGithub('')
+    }
   }
 
 
@@ -91,8 +96,10 @@ export function Card(){
       <div className='container_custom'>
         <div className="input_git">
           <input
+            className={validationUser ? 'input_invalid' : ''}
             type="text"
             placeholder='Digite seu usuario do github'
+            value={nameUserGithub}
             onChange={e => setNameUserGithub(e.target.value)}
           />
           <button

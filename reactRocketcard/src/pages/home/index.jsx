@@ -1,5 +1,4 @@
 
-import { useState } from 'react'
 import { Card } from '../../components/card/index'
 import '../../style/app.sass'
 

@@ -1,4 +1,5 @@
 import "../../style/components/infoData.sass"
+import "../../style/responsive.sass"
 import followersImg from '../../img/followers.png'
 import repositoryImg from '../../img/repository.png'
 import companyImg from '../../img/company.png'
