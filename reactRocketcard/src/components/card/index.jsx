@@ -19,7 +19,7 @@ export function Card(){
     })
   const [userGithub, setUserGithub] = useState("github")
   const [nameUserGithub, setNameUserGithub] = useState('')
-  const [backGroundColor, setBackGroundColor] = useState(false)
+  const [backGroundColor, setBackGroundColor] = useState('')
 
   function getNameInput(){
     const newName =  nameUserGithub
@@ -28,7 +28,11 @@ export function Card(){
 
 
   function alterBackgroundColor(){
-    setBackGroundColor(!backGroundColor)
+     return  setBackGroundColor(
+        `#${parseInt((Math.random() * 0xFFFFFF))
+          .toString(16)}`
+      )
+
   }
 
 
@@ -54,7 +58,8 @@ export function Card(){
 
   return (
     <div className="container">
-      <div className={`container_card ${backGroundColor ? 'bg_conatinerCard' : ''}`}>
+      {/* <div className={`container_card ${backGroundColor ? 'bg_conatinerCard' : ''}`}> */}
+       <div className='container_card' style={{backgroundColor: backGroundColor}}>
         <div className="card">
           <div className="header">
             <div className="img">
